@@ -122,6 +122,7 @@ body {
   font-weight: 700;
   font-family: "Outfit", sans-serif;
   background: linear-gradient(to right, var(--primary), var(--secondary));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -566,6 +567,10 @@ footer {
 @media (max-width: 768px) {
   .container {
     padding: 0 1.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 
   .nav-links {
