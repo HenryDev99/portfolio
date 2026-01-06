@@ -397,7 +397,7 @@ body {
 /* Projects */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
@@ -564,15 +564,62 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
   .nav-links {
     display: none;
   }
+
+  .section-padding {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
   .hero-content h1 {
     font-size: 3rem;
+    line-height: 1.1;
   }
+
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
+
+  /* Timeline Mobile Adjustments */
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timeline-item {
+    padding-left: 35px;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-dot {
+    left: 2.5px;
+  }
+
   .footer-content {
     flex-direction: column;
     gap: 3rem;
