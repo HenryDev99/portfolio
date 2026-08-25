@@ -1,55 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const navbar = document.getElementById("navbar");
-  const reveals = document.querySelectorAll(".reveal");
+  const header = document.querySelector("[data-header]");
+  const menuButton = document.querySelector("[data-menu-button]");
+  const navigation = document.querySelector("[data-navigation]");
+  const year = document.querySelector("[data-year]");
+  const revealTargets = document.querySelectorAll(".reveal");
 
-  // Scroll reveal function
-  const revealOnScroll = () => {
-    const windowHeight = window.innerHeight;
-    reveals.forEach((el) => {
-      const revealTop = el.getBoundingClientRect().top;
-      const revealPoint = 150;
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
 
-      if (revealTop < windowHeight - revealPoint) {
-        el.classList.add("active");
-      }
-    });
+  const closeMenu = () => {
+    if (!menuButton || !navigation) return;
+
+    menuButton.setAttribute("aria-expanded", "false");
+    navigation.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+
+    const menuLabel = menuButton.querySelector(".sr-only");
+    if (menuLabel) menuLabel.textContent = "메뉴 열기";
   };
 
-  // Navbar scroll effect
-  const handleNavbar = () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
+  if (menuButton && navigation) {
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      navigation.classList.toggle("is-open", !isOpen);
+      document.body.classList.toggle("menu-open", !isOpen);
+
+      const menuLabel = menuButton.querySelector(".sr-only");
+      if (menuLabel) menuLabel.textContent = isOpen ? "메뉴 열기" : "메뉴 닫기";
+    });
+
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 720) closeMenu();
+  });
+
+  const updateHeader = () => {
+    if (header) header.classList.toggle("is-scrolled", window.scrollY > 12);
   };
 
-  // Initial triggers
-  revealOnScroll();
-  handleNavbar();
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
 
-  // Event listeners
-  window.addEventListener("scroll", revealOnScroll);
-  window.addEventListener("scroll", handleNavbar);
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealTargets.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
 
-  // Smooth scroll for nav links (handled by CSS, but good to ensure)
-  document.querySelectorAll(".nav-links a").forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute("href");
-      const targetElement = document.querySelector(targetId);
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -8%", threshold: 0.08 },
+  );
 
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 80,
-          behavior: "smooth",
-        });
-      }
-    });
-  });
-
-  // Logo click to top
-  document.querySelector(".logo").addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  revealTargets.forEach((element) => revealObserver.observe(element));
 });
