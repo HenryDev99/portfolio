@@ -101,9 +101,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .impact-card { position: relative; min-height: 330px; padding: 36px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
-.impact-featured { background: var(--blue); color: #fff; }
+.impact-featured { border-color: #b9d6ff; background: #eef5ff; color: var(--ink-strong); box-shadow: inset 4px 0 0 var(--blue); }
 .impact-number { color: #8b95a1; font-size: 12px; font-weight: 800; }
-.impact-featured .impact-number, .impact-featured p { color: rgba(255, 255, 255, 0.92); }
+.impact-featured .impact-number { color: #1b64da; }
 .impact-value { margin: 46px 0 12px; color: var(--blue); font-size: clamp(56px, 7vw, 82px); font-weight: 780; line-height: 1; letter-spacing: -0.07em; }
 .impact-card h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -0.035em; }
 .impact-card > p:last-child { max-width: 430px; margin-bottom: 0; color: var(--muted); }
