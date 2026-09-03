@@ -130,6 +130,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .company-card { display: grid; min-height: 0; grid-template-columns: minmax(250px, 0.72fr) minmax(0, 1.28fr); grid-template-rows: auto auto auto; column-gap: 56px; padding: 42px; border: 1px solid #dfe3e8; border-radius: var(--radius); background: #fff; color: var(--ink); }
 a.company-card { text-decoration: none; transition: transform 0.25s ease, box-shadow 0.25s ease; }
 a.company-card:hover, a.company-card:focus-visible { transform: translateY(-3px); box-shadow: var(--shadow); }
+.company-card-link { grid-column: 1; grid-row: 3; align-self: end; color: var(--blue-dark); font-size: 14px; font-weight: 750; }
+a.company-card:hover .company-card-link, a.company-card:focus-visible .company-card-link { text-decoration: underline; text-underline-offset: 4px; }
 .company-card-wide { grid-column: auto; }
 .company-card-header { display: flex; grid-column: 1; grid-row: 1; justify-content: space-between; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid rgba(25, 31, 40, 0.12); color: #5f6b7a; font-size: 13px; font-weight: 750; }
 .company-name { color: var(--blue); font-weight: 800; }
@@ -179,6 +181,7 @@ a.company-card:hover, a.company-card:focus-visible { transform: translateY(-3px)
   .company-card h3 { margin: 0; }
   .company-summary { margin: 22px 0 6px; }
   .company-card .tags { margin-top: 0; }
+  .company-card-link { align-self: flex-start; margin-top: 24px; }
 }
 
 @media (max-width: 720px) {
