@@ -100,13 +100,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .statement h2 { font-size: clamp(42px, 5.5vw, 68px); }
 
 .impact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-.impact-card { position: relative; min-height: 330px; padding: 36px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+.impact-card { position: relative; display: flex; flex-direction: column; min-height: 330px; padding: 36px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
 .impact-featured { border-color: #b9d6ff; background: #eef5ff; color: var(--ink-strong); box-shadow: inset 4px 0 0 var(--blue); }
 .impact-number { color: #8b95a1; font-size: 12px; font-weight: 800; }
 .impact-featured .impact-number { color: #1b64da; }
 .impact-value { margin: 46px 0 12px; color: var(--blue); font-size: clamp(56px, 7vw, 82px); font-weight: 780; line-height: 1; letter-spacing: -0.07em; }
+.impact-label { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.2; letter-spacing: -0.05em; word-break: keep-all; }
 .impact-card h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -0.035em; }
-.impact-card > p:last-child { max-width: 430px; margin-bottom: 0; color: var(--muted); }
+.impact-description { max-width: 430px; margin: 0 0 22px; color: var(--muted); }
+.impact-description strong { color: var(--ink); font-weight: 700; }
+.impact-source { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: var(--blue-dark); font-size: 14px; font-weight: 750; text-decoration: none; }
+.impact-source:hover, .impact-source:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.impact-note { margin: 24px 0 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
 
 .ownership-list { display: grid; margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
 .ownership-list li { display: grid; grid-template-columns: 70px 170px 1fr; align-items: center; min-height: 100px; border-bottom: 1px solid var(--line); }
