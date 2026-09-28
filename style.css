@@ -84,7 +84,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .section-title-row > a:hover { color: var(--accent-bright); }
 .cover-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
 .project-cover { min-width: 0; text-decoration: none; }
-.project-cover img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; background: #181115; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24); transition: transform 0.28s ease, box-shadow 0.28s ease; }
+.project-cover img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; background: #181115; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24); transition: transform 0.28s ease, box-shadow 0.28s ease; }
 .project-cover:hover img, .project-cover:focus-visible img { transform: translateY(-7px); box-shadow: 0 20px 46px rgba(0, 0, 0, 0.42); }
 .project-cover h3 { overflow: hidden; margin: 10px 0 0; font-family: var(--display); font-size: 14px; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
 .project-cover p { display: -webkit-box; margin: 4px 0 0; overflow: hidden; color: var(--quiet); font-size: 11px; line-height: 1.5; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
